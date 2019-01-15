@@ -3,7 +3,7 @@
 import socket
 import sys
 
-HOST = None               # Symbolic name meaning all available interfaces
+HOST = '127.0.0.100'               # Symbolic name meaning all available interfaces
 PORT = 50007              # Arbitrary non-privileged port
 s = None
 for res in socket.getaddrinfo(HOST, PORT, socket.AF_UNSPEC,
@@ -31,4 +31,7 @@ with conn:
     while True:
         data = conn.recv(1024)
         if not data: break
-        conn.send(data)
+        # conn.send(data)
+        back = str('hahaahahahah')
+        conn.send(back.encode('utf-8'))
+        # here we must send byte type
